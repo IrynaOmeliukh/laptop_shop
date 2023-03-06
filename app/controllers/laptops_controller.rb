@@ -1,13 +1,12 @@
 class LaptopsController < ApplicationController
-  before_action :set_laptop, only: %i[ show edit update destroy ]
-
   # GET /laptops
   def index
-    @laptops = Laptop.all
+    @laptops = collection
   end
 
   # GET /laptops/1
   def show
+    @laptop = resource
   end
 
   # GET /laptops/new
@@ -17,6 +16,7 @@ class LaptopsController < ApplicationController
 
   # GET /laptops/1/edit
   def edit
+    @laptop = resource
   end
 
   # POST /laptops
@@ -32,6 +32,8 @@ class LaptopsController < ApplicationController
 
   # PATCH/PUT /laptops/1
   def update
+    @laptop = resource
+
     if @laptop.update(laptop_params)
       redirect_to @laptop, notice: "Laptop was successfully updated."
     else
@@ -41,18 +43,24 @@ class LaptopsController < ApplicationController
 
   # DELETE /laptops/1
   def destroy
+    @laptop = resource
+
     @laptop.destroy
     redirect_to laptops_url, notice: "Laptop was successfully destroyed."
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_laptop
-      @laptop = Laptop.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
     def laptop_params
       params.require(:laptop).permit(:company, :model, :year, :price)
     end
+
+    def collection
+      Laptop.all
+    end
+
+    def resource
+      collection.find(params[:id])
+    end
+  end
 end
