@@ -62,5 +62,4 @@ class LaptopsController < ApplicationController
     def resource
       collection.find(params[:id])
     end
-  end
 end
