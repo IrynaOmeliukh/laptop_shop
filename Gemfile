@@ -64,4 +64,8 @@ group :development do
   # gem "spring"
 end
 
-gem 'faker'
+gem "faker", "~> 3.1"
+
+gem "searchkick", "~> 5.2"
+
+gem "elasticsearch", "< 7.14"

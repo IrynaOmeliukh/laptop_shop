@@ -1,7 +1,7 @@
 class LaptopsController < ApplicationController
   # GET /laptops
   def index
-    @laptops = collection
+    @laptops = LaptopSearcher.search(params[:query])
   end
 
   # GET /laptops/1
