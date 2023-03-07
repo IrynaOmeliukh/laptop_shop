@@ -65,3 +65,5 @@ group :development do
 end
 
 gem 'faker'
+
+gem "pry", "~> 0.14.2"

@@ -49,17 +49,29 @@ class LaptopsController < ApplicationController
     redirect_to laptops_url, notice: "Laptop was successfully destroyed."
   end
 
+  def add_to_favorites
+      @laptop = resource
+      @laptop.update(like: true)
+      redirect_to root_path
+    end
+
+    def remove_from_favorites
+      @laptop = resource
+      @laptop.update(like: false)
+      redirect_to root_path
+    end
+
   private
 
-    def laptop_params
-      params.require(:laptop).permit(:company, :model, :year, :price)
-    end
+  def laptop_params
+    params.require(:laptop).permit(:company, :model, :year, :price, :like)
+  end
 
-    def collection
-      Laptop.all
-    end
+  def collection
+    Laptop.all
+  end
 
-    def resource
-      collection.find(params[:id])
-    end
+  def resource
+    collection.find(params[:id])
+  end
 end
