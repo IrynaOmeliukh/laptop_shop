@@ -45,8 +45,28 @@ class LaptopsController < ApplicationController
   def destroy
     @laptop = resource
 
-    @laptop.destroy
-    redirect_to laptops_url, notice: "Laptop was successfully destroyed."
+    if session[:favorites].exclude?(@laptop.id)
+      @laptop.destroy
+      flash[:notice] = 'Laptop was successfully destroyed.'
+    else
+      flash[:notice] = 'The laptop cannot be removed, it is in the favorites.'
+    end
+
+    redirect_to root_path
+  end
+
+  def add_to_favorites
+    id = params[:id].to_i
+    session[:favorites] << id unless session[:favorites].include?(id)
+
+    redirect_to root_path, notice: 'Laptop was successfully added to favorites.'
+  end
+
+  def remove_from_favorites
+    id = params[:id].to_i
+    session[:favorites].delete(id)
+
+    redirect_to root_path, notice: 'Laptop was successfully removed.'
   end
 
   private
