@@ -1,4 +1,7 @@
 <div class="w-fit inline-block m-3 h-max">
+<div class="bg-pink-400 text-white py-2 px-4 rounded-t-lg rounded-b-none">
+    <h2 class="text-xl font-bold"><%= laptop.model %></h2>
+  </div>
   <div id="<%= dom_id laptop %>" class="bg-white shadow-lg rounded-lg overflow-hidden">
     <div class="flex flex-col md:flex-row px-6 py-4">
       <div class="flex-1 pr-4">
@@ -7,12 +10,6 @@
         </p>
         <p class="my-2 text-gray-800 font-medium">
           <%= laptop.company %>
-        </p>
-        <p class="my-2 text-gray-600 text-sm">
-          Model:
-        </p>
-        <p class="my-2 text-gray-800 font-medium">
-          <%= laptop.model %>
         </p>
       </div>
       <div class="flex-1 pl-4 border-l md:border-l-0">
@@ -42,7 +39,14 @@
           <%= button_to 'Add to favorites', add_to_favorites_path(laptop.id), class:"bg-pink-600 hover:bg-pink-700 text-white font-semibold py-2 px-4 border border-pink-600 rounded" %>
         <% end %>
       </div>
-      <hr class="mt-2">
+      <div class="flex justify-around px-6 py-4 bg-white">
+        <% if @comparing_laptops.include?(laptop)%>
+          <%= button_to 'Remove from comparing', remove_from_comparing_path(laptop), method: :delete,  class:"bg-pink-600 hover:bg-pink-700 text-white font-semibold py-2 px-4 border border-pink-600 rounded" %>
+        <% else %>
+          <%= button_to 'Add to comparing', add_to_comparing_path(laptop.id), class:"bg-pink-600 hover:bg-pink-700 text-white font-semibold py-2 px-4 border border-pink-600 rounded" %>
+        <% end %>
+      </div>
+      <%# <hr class="mt-2"> %>
     <% end %>
   </div>
 </div>

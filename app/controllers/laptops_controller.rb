@@ -69,6 +69,20 @@ class LaptopsController < ApplicationController
     redirect_to root_path, notice: 'Laptop was successfully removed.'
   end
 
+  def add_to_comparing
+    id = params[:id].to_i
+    session[:comparing_laptops] << id unless session[:comparing_laptops].include?(id)
+
+    redirect_to root_path, notice: 'Laptop was successfully added to comparing.'
+  end
+
+  def remove_from_comparing
+    id = params[:id].to_i
+    session[:comparing_laptops].delete(id)
+
+    redirect_to root_path, notice: 'Laptop was successfully removed.'
+  end
+
   private
 
     def laptop_params
