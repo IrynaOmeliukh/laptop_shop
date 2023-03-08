@@ -3,18 +3,13 @@
     <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
   <% end %>
 
-  <%= form_tag laptops_path, method: :get do %>
-    <%= text_field_tag :query, params[:query], placeholder: "Search laptops" %>
-    <%= submit_tag "Search" %>
-  <% end %>
+ <%# <h1 class="text-4xl font-bold text-pink-500 mb-8 center">Favorites</h1> %>
+<div class="flex justify-center items-center py-8">
+  <h1 class="text-4xl font-bold text-pink-600 tracking-wide">All laptops</h1>
+</div>
 
-  <div class="flex justify-between items-center">
-    <h1 class="font-bold text-4xl">Laptops</h1>
-    <%= link_to 'New laptop', new_laptop_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
-    <%= link_to 'laptops_favorites_collection', favorite_items_index_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
-  </div>
 
-  <div id="laptops" class="min-w-full">
+  <div id="laptops">
     <%= render @laptops %>
   </div>
 

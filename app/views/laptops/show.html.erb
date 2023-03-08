@@ -1,15 +1,48 @@
 <div class="mx-auto md:w-2/3 w-full flex">
   <div class="mx-auto">
     <% if notice.present? %>
-      <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
+      <p class="py-2 px-3 bg-pink-100 mb-5 text-pink-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
     <% end %>
 
-    <%= render @laptop %>
-
-    <%= link_to 'Edit this laptop', edit_laptop_path(@laptop), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <div class="inline-block ml-2">
-      <%= button_to 'Destroy this laptop', laptop_path(@laptop), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
+    <div id="<%= dom_id @laptop %>" class="bg-white shadow-lg rounded-lg overflow-hidden my-5">
+      <div class="flex flex-col md:flex-row px-6 py-4">
+        <div class="flex-1 pr-4">
+          <p class="my-2 text-gray-600 text-sm">
+            Company:
+          </p>
+          <p class="my-2 text-gray-800 font-medium">
+            <%= @laptop.company %>
+          </p>
+          <p class="my-2 text-gray-600 text-sm">
+            Model:
+          </p>
+          <p class="my-2 text-gray-800 font-medium">
+            <%= @laptop.model %>
+          </p>
+        </div>
+        <div class="flex-1 pl-4 border-l md:border-l-0">
+          <p class="my-2 text-gray-600 text-sm">
+            Year:
+          </p>
+          <p class="my-2 text-gray-800 font-medium">
+            <%= @laptop.year %>
+          </p>
+          <p class="my-2 text-gray-600 text-sm">
+            Price:
+          </p>
+          <p class="my-2 text-gray-800 font-medium">
+            <%= @laptop.price %>
+          </p>
+        </div>
+      </div>
     </div>
-    <%= link_to 'Back to laptops', laptops_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+
+    <%= link_to 'Edit this laptop', edit_laptop_path(@laptop), class: "rounded-lg py-3 px-5 bg-pink-100 inline-block font-medium hover:bg-pink-200" %>
+
+    <div class="inline-block ml-2">
+      <%= button_to 'Destroy this laptop', laptop_path(@laptop), method: :delete, class: "rounded-lg py-3 px-5 bg-pink-500 text-white font-medium hover:bg-pink-600" %>
+    </div>
+
+    <%= link_to 'Back to laptops', laptops_path, class: "ml-2 rounded-lg py-3 px-5 bg-pink-100 inline-block font-medium hover:bg-pink-200" %>
   </div>
 </div>
