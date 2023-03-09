@@ -66,6 +66,12 @@ end
 
 gem "faker", "~> 3.1"
 
-gem "searchkick", "~> 5.2"
+gem "searchkick"
 
 gem "elasticsearch", "< 7.14"
+
+gem "rspec-rails", "~> 6.0"
+
+gem "pry", "~> 0.14.2"
+
+gem "rails-controller-testing", "~> 1.0"
