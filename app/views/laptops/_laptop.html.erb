@@ -29,7 +29,7 @@
     </div>
     <% if action_name != "show" %>
       <div class="flex justify-between px-6 py-4 bg-white">
-        <%= link_to "Show this laptop", laptop, class: "rounded-lg py-3 px-5 bg-white inline-block font-medium text-pink-600 hover:bg-gray-200" %>
+        <%= render 'shared/popup_show', laptop: laptop %>
         <%= link_to 'Edit this laptop', edit_laptop_path(laptop), class: "rounded-lg py-3 px-5 bg-white inline-block font-medium text-pink-600 hover:bg-gray-200 ml-2" %>
       </div>
       <div class="flex justify-around px-6 py-4 bg-white">
@@ -46,7 +46,6 @@
           <%= button_to 'Add to comparing', add_to_comparing_path(laptop.id), class:"bg-pink-600 hover:bg-pink-700 text-white font-semibold py-2 px-4 border border-pink-600 rounded" %>
         <% end %>
       </div>
-      <%# <hr class="mt-2"> %>
     <% end %>
   </div>
 </div>

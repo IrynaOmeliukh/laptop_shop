@@ -5,6 +5,7 @@ RSpec.describe 'LaptopCompareController', type: :request do
     it 'is successful' do
       get laptop_compare_index_path
 
+      expect(response).to render_template(:index)
       expect(response).to be_successful
     end
   end

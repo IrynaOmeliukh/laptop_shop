@@ -1,0 +1,24 @@
+<ul class="text-gray-900">
+  <li class="mb-4">
+    <span class="font-medium text-pink-500">Company:</span> <%= laptop.company %>
+  </li>
+  <li class="mb-4">
+    <span class="font-medium text-pink-500">Model:</span> <%= laptop.model %>
+  </li>
+  <li class="mb-4">
+    <span class="font-medium text-pink-500">Price:</span> <%= laptop.price %>
+  </li>
+  <li class="mb-4">
+    <span class="font-medium text-pink-500">Year:</span> <%= laptop.year %>
+  </li>
+  <li class="mb-4 flex justify-around">
+    <%= link_to 'Edit the laptop', edit_laptop_path(laptop), class: "inline-block px-4 py-2 font-medium text-white bg-pink-500 rounded-lg hover:bg-pink-600" %>
+    <%= button_to 'Delete the laptop', laptop_path(laptop), method: :delete, data: { confirm: 'Are you sure?' }, class: "inline-block px-4 py-2 font-medium text-white bg-pink-500 rounded-lg hover:bg-pink-600 ml-4" %>
+
+  </li>
+  <li class="mb-4 flex justify-center">
+    <button type="button" data-action="modal#close" class="inline-block px-4 py-2 font-medium text-white bg-pink-500 rounded-lg hover:bg-pink-600 ml-4">
+      Close
+    </button>
+  </li>
+</ul>
