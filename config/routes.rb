@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'laptop_compare/index'
+  resources :laptop_compare
   get 'favorite_items/index'
 
   resources :laptops

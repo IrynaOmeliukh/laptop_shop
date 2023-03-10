@@ -75,3 +75,7 @@ gem "rspec-rails", "~> 6.0"
 gem "pry", "~> 0.14.2"
 
 gem "rails-controller-testing", "~> 1.0"
+
+gem 'wicked_pdf'
+
+gem "wkhtmltopdf-binary"
