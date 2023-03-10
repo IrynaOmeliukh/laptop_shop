@@ -1,12 +1,13 @@
 class LaptopCompareController < ApplicationController
   def index
     @laptops = load_comparing
-    respond_to do |format|
-      format.html
-      format.pdf do
-        render pdf: "file_name", template: 'laptop_compare/show',
-        formats: [:html], stylesheets: ["application"], layout: 'pdf'   # Excluding ".pdf" extension.
-      end
-    end
+
+    ComparingMailer.new_compare(@laptops).deliver_later
+  end
+
+  def render_pdf
+    @laptops = load_comparing
+    render pdf: "file_name", formats: [:html], stylesheets: ["application"],
+           layout: 'pdf'   # Excluding ".pdf" extension.
   end
 end
