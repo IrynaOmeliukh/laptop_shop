@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :laptop_compare, only: :index
 
   get 'laptop_compare/render_pdf', to: 'laptop_compare#render_pdf', as: 'render_pdf'
+  get 'laptop_compare/send_pdf_email', to: 'laptop_compare#send_pdf_email', as: 'send_pdf_email'
 
   get 'favorite_items/index'
 
