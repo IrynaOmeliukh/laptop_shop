@@ -16,7 +16,5 @@ class ApplicationController < ActionController::Base
 
   def load_comparing
     @comparing_laptops = Laptop.find(session[:comparing_laptops])
-    # puts "comparing_laptops: #{@comparing_laptops}"
-    # return @comparing_laptops
   end
 end
