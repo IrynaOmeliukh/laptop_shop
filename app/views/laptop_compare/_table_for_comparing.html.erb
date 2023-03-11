@@ -9,8 +9,8 @@
       </tr>
     </thead>
     <tbody class="text-gray-600 text-sm font-light">
-      <% @laptops.each do |laptop| %>
-        <%= render 'laptop', laptop: laptop %>
+      <% laptops.each do |laptop| %>
+        <%= render 'laptop_compare/laptop', laptop: laptop %>
       <% end %>
     </tbody>
   </table>

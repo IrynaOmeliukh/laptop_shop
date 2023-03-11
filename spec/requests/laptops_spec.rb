@@ -134,4 +134,24 @@ RSpec.describe 'LaptopsController', type: :request do
       expect(response).to have_http_status(:found)
     end
   end
+
+  describe "GET :render_pdf" do
+    it 'renders a PDF file' do
+      get render_pdf_path
+      expect(response).to be_successful
+      expect(response.content_type).to eq 'application/pdf'
+    end
+
+    it "sends an email" do
+      laptops = [laptop, other_laptop]
+      allow(controller).to receive(:load_comparing).and_return(laptops)
+
+      get render_pdf_path
+
+      expect(ActionMailer::Base.deliveries.count).to eq(1)
+      expect(ActionMailer::Base.deliveries.first.to).to eq(["iryna.omeliukh@gmail.com"])
+      expect(ActionMailer::Base.deliveries.first.attachments.count).to eq(1)
+      expect(ActionMailer::Base.deliveries.first.attachments.first.filename).to eq("compare.pdf")
+    end
+  end
 end
