@@ -9,7 +9,7 @@ class LaptopCompareController < ApplicationController
     render pdf: "file_name", formats: [:html], stylesheets: ["application"],
            layout: '_pdf'   # Excluding ".pdf" extension.
 
-    ComparingMailer.new_compare(@laptops).deliver_later
+    ComparingMailer.new_compare(@laptops).deliver_now
     flash[:info] = "Please check your email to activate your account."
     # redirect_to root_path, notice: 'Email sent successfully.'
   end

@@ -10,7 +10,7 @@ class ComparingMailer < ApplicationMailer
       @url  = 'http://www.gmail.com'
       # binding.pry
     # @greeting = 'hello'
-    mail to: "iryna.omeliukh@gmail.com"
+    mail to: "ihormruchko666@gmail.com"
 
   end
 end
