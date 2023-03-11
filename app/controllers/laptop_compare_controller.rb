@@ -7,7 +7,8 @@ class LaptopCompareController < ApplicationController
     @laptops = load_comparing
 
     render pdf: "file_name", formats: [:html], stylesheets: ["application"],
-           layout: '_pdf'   # Excluding ".pdf" extension.
+           layout: '_pdf'
+
 
     ComparingMailer.new_compare(@laptops).deliver_now
   end

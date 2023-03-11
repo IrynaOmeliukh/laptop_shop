@@ -1,18 +1,19 @@
 require "rails_helper"
 
 RSpec.describe ComparingMailer, type: :mailer do
-  describe "new_compare" do
-    let(:mail) { ComparingMailer.new_compare }
+  describe ':new_compare' do
+    let(:laptop1) { Laptop.create(model: 'Dell XPS', price: 1000) }
+    let(:laptop2) { Laptop.create(model: 'MacBook Pro', price: 1500) }
+    let(:laptop_compare) { [laptop1, laptop2] }
 
-    it "renders the headers" do
-      expect(mail.subject).to eq("New compare")
-      expect(mail.to).to eq(["to@example.org"])
-      expect(mail.from).to eq(["from@example.com"])
-    end
+    it 'sends an email with the comparison table' do
+      email = ComparingMailer.new_compare(laptop_compare).deliver_now
 
-    it "renders the body" do
-      expect(mail.body.encoded).to match("Hi")
+      expect(ActionMailer::Base.deliveries.count).to eq(1)
+      expect(email.to).to eq(['iryna.omeliukh@gmail.com'])
+      expect(email.subject).to eq('Laptop Comparison')
+      expect(email.attachments.count).to eq(1)
+      expect(email.attachments.first.filename).to eq('compare.pdf')
     end
   end
-
 end
