@@ -6,5 +6,4 @@ class ComparingMailerPreview < ActionMailer::Preview
     laptops = Laptop.find((995..998).to_a)
     ComparingMailer.new_compare(laptops)
   end
-
 end
