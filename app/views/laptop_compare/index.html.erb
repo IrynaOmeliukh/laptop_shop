@@ -1,0 +1,7 @@
+<div class="flex justify-around items-center py-8">
+  <h1 class="text-4xl font-bold text-pink-600 tracking-wide">My Comparing</h1>
+  <%= link_to 'Get pdf', render_pdf_path, class: 'bg-pink-600 hover:bg-pink-700 text-white font-semibold py-2 px-4 border border-pink-600 rounded'%>
+</div>
+<div>
+  <%= render 'laptop_compare/table_for_comparing', laptops: @laptops %>
+</div>

@@ -1,0 +1,17 @@
+<div class="bg-white shadow-md rounded-lg my-6">
+  <table class="w-full table-auto">
+    <thead>
+      <tr class="bg-pink-200 text-gray-700 uppercase text-sm leading-normal">
+        <th class="py-3 px-6 text-left">Company</th>
+        <th class="py-3 px-6 text-left">Model</th>
+        <th class="py-3 px-6 text-left">Year</th>
+        <th class="py-3 px-6 text-left">Price</th>
+      </tr>
+    </thead>
+    <tbody class="text-gray-600 text-sm font-light">
+      <% laptops.each do |laptop| %>
+        <%= render 'laptop_compare/laptop', laptop: laptop %>
+      <% end %>
+    </tbody>
+  </table>
+</div>

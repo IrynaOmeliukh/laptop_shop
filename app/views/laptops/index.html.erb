@@ -1,0 +1,16 @@
+<div class="w-full">
+  <% if notice.present? %>
+    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
+  <% end %>
+
+ <%# <h1 class="text-4xl font-bold text-pink-500 mb-8 center">Favorites</h1> %>
+<div class="flex justify-center items-center py-8">
+  <h1 class="text-4xl font-bold text-pink-600 tracking-wide">All laptops</h1>
+</div>
+
+
+  <div id="laptops">
+    <%= render @laptops %>
+  </div>
+
+</div>
